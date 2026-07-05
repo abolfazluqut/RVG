@@ -861,3 +861,67 @@ async def test_ws_redirect():
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=CONFIG["port"], log_level="info", workers=1)
+
+@app.get("/api/ui/links")
+def ui_links():
+    return LINKS
+
+@app.get("/api/ui/subs")
+def ui_subs():
+    return SUBS
+
+@app.get("/api/ui/stats")
+def ui_stats():
+    return stats
+    export default function LinksPage({ links }: any) {
+  return (
+    <div className="p-6 text-white">
+      <h2 className="text-xl font-bold mb-4">Links</h2>
+
+      <div className="grid gap-3">
+        {Object.entries(links).map(([id, link]: any) => (
+          <div
+            key={id}
+            className="bg-zinc-900 border border-zinc-800 p-4 rounded-xl flex justify-between items-center"
+          >
+            <div>
+              <p className="font-bold">{link.name}</p>
+              <p className="text-xs text-zinc-400">
+                /go/{id}
+              </p>
+            </div>
+
+            <button className="bg-indigo-500 px-3 py-1 rounded text-sm">
+              Copy
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+    }
+export default function Sidebar() {
+  return (
+    <div className="w-64 h-screen bg-zinc-950 text-white border-r border-zinc-800 p-4">
+      <h1 className="text-xl font-bold text-indigo-400">RVG Panel</h1>
+
+      <div className="mt-8 space-y-3">
+        <button className="w-full text-left p-2 hover:bg-zinc-800 rounded">
+          📊 Dashboard
+        </button>
+
+        <button className="w-full text-left p-2 hover:bg-zinc-800 rounded">
+          🔗 Links
+        </button>
+
+        <button className="w-full text-left p-2 hover:bg-zinc-800 rounded">
+          📡 Subs
+        </button>
+
+        <button className="w-full text-left p-2 hover:bg-zinc-800 rounded">
+          ⚙️ Settings
+        </button>
+      </div>
+    </div>
+  )
+    }
