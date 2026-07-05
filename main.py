@@ -861,3 +861,128 @@ async def test_ws_redirect():
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=CONFIG["port"], log_level="info", workers=1)
+export default function Layout({ children }: any) {
+  return (
+    <div className="flex h-screen bg-gradient-to-br from-black via-zinc-950 to-indigo-950 text-white">
+
+      {/* Sidebar */}
+      <div className="w-72 backdrop-blur-xl bg-white/5 border-r border-white/10 p-5">
+
+        <div className="text-2xl font-bold text-indigo-400">
+          RVG Panel
+        </div>
+
+        <p className="text-xs text-zinc-400 mt-2">
+          Modern Control Dashboard
+        </p>
+
+        <div className="mt-10 space-y-3">
+
+          <div className="flex items-center gap-2 p-3 rounded-xl bg-white/5 hover:bg-white/10 cursor-pointer">
+            📊 Dashboard
+          </div>
+
+          <div className="flex items-center gap-2 p-3 rounded-xl bg-white/5 hover:bg-white/10 cursor-pointer">
+            🔗 Links
+          </div>
+
+          <div className="flex items-center gap-2 p-3 rounded-xl bg-white/5 hover:bg-white/10 cursor-pointer">
+            📡 Subs
+          </div>
+
+          <div className="flex items-center gap-2 p-3 rounded-xl bg-white/5 hover:bg-white/10 cursor-pointer">
+            ⚙️ Settings
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* Main */}
+      <div className="flex-1 p-8 overflow-auto">
+
+        <div className="mb-6">
+          <h1 className="text-3xl font-bold">
+            Dashboard
+          </h1>
+          <p className="text-zinc-400 text-sm">
+            Real-time system overview
+          </p>
+        </div>
+
+        {children}
+
+      </div>
+
+    </div>
+  )
+}
+export default function Card({ title, value }: any) {
+  return (
+    <div className="backdrop-blur-xl bg-white/5 border border-white/10 p-5 rounded-2xl shadow-xl hover:scale-[1.02] transition">
+
+      <p className="text-sm text-zinc-400">{title}</p>
+
+      <h2 className="text-4xl font-bold mt-2 text-white">
+        {value}
+      </h2>
+
+    </div>
+  )
+}
+                  export default function Links({ links }: any) {
+  return (
+    <div className="space-y-3">
+
+      {Object.entries(links).map(([id, link]: any) => (
+        <div
+          key={id}
+          className="flex justify-between items-center p-4 rounded-xl
+          bg-white/5 border border-white/10 backdrop-blur-xl"
+        >
+
+          <div>
+            <p className="font-bold">{link.name}</p>
+            <p className="text-xs text-zinc-400">
+              /go/{id}
+            </p>
+          </div>
+
+          <button className="px-4 py-1 rounded-lg bg-indigo-500 hover:bg-indigo-600 transition">
+            Copy
+          </button>
+
+        </div>
+      ))}
+
+    </div>
+  )
+}
+export default function Subs({ subs }: any) {
+  return (
+    <div className="space-y-3">
+
+      {Object.entries(subs).map(([id, sub]: any) => (
+        <div
+          key={id}
+          className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xl"
+        >
+
+          <div className="flex justify-between">
+            <p className="font-bold">{sub.name}</p>
+
+            <span className="text-green-400 text-xs">
+              ACTIVE
+            </span>
+          </div>
+
+          <p className="text-xs text-zinc-400 mt-1">
+            https://your-domain.com/sub/{id}
+          </p>
+
+        </div>
+      ))}
+
+    </div>
+  )
+}
